@@ -16,28 +16,28 @@ int main(int argc, char *argv[]){
 
   printf("Arquivo aberto com sucesso!\n");
 
-  // Lê e exibe o arquivo caractere por caractere
-  int caractere;
-  while ((caractere = fgetc(arquivo)) != EOF) {
-    printf("%c", caractere);
-  }
-
-  // Tamanho do arquivo
+  // Tamanho do arquivo.
   fseek(arquivo, 0, SEEK_END);
   long tamanho = ftell(arquivo);  
   rewind(arquivo);
   printf("Tamanho: %ld bytes\n", tamanho);
 
-  // Alocar memoria para o codigo
+  // Alocar memoria para o codigo.
   char *codigo = malloc(tamanho + 1);
 
   if (codigo == NULL) {
     printf("Nao foi possivel reservar memoria.\n");
     fclose(arquivo);
     return 1;
-  }  
+  }
 
-  // Liberar memoria
+  // Armazena a quantidade de bytes lidos do arquivo.
+  size_t bytesLidos = fread(codigo, 1, tamanho, arquivo);
+  codigo[bytesLidos] = '\0';
+  printf("%s", codigo);
+  
+
+  // Libera memoria.
   fclose(arquivo);
   free(codigo);
 
