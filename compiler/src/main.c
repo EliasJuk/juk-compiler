@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "lexer.h"
 
 int main(int argc, char *argv[]){
   if(argc < 2){
@@ -34,8 +35,7 @@ int main(int argc, char *argv[]){
   // Armazena a quantidade de bytes lidos do arquivo.
   size_t bytesLidos = fread(codigo, 1, tamanho, arquivo);
   codigo[bytesLidos] = '\0';
-  printf("%s", codigo);
-  
+  lexer_analizer(codigo);  
 
   // Libera memoria.
   fclose(arquivo);
