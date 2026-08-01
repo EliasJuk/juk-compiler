@@ -6,8 +6,8 @@ cd /d "%~dp0"
 
 if not exist "..\build" mkdir "..\build"
 
-cl "..\src\main.c" /Fe:"..\build\main.exe" /Fo:"..\build\main.obj"
+cl "..\src\main.c" "..\src\lexer.c" /Fe:"..\build\jukc.exe" /Fo:"..\build\\"
 
 if errorlevel 1 exit /b 1
 
-"..\build\main.exe" "..\example\hello.juk"
+"..\build\jukc.exe" "..\example\hello.juk"
