@@ -13,7 +13,7 @@ static int skip_whitespace(const char *codigo, int i) {
 
 void lexer_analizer(const char *codigo){
   int i = 0;
-  
+
   i = skip_whitespace(codigo, i);
 
   if(strncmp(&codigo[i], "print", 5) == 0 ){
@@ -27,6 +27,8 @@ void lexer_analizer(const char *codigo){
     printf("TOKEN_LEFT_PAREN\n");
     i++;
   }
+
+  i = skip_whitespace(codigo, i);
 
   if (codigo[i] == '"') {
     printf("INICIO_STRING\n");
@@ -43,10 +45,14 @@ void lexer_analizer(const char *codigo){
     i++;
   }
 
+  i = skip_whitespace(codigo, i);
+
   if (codigo[i] == ')') {
     printf("TOKEN_RIGHT_PAREN\n");
     i++;
   }
+
+  i = skip_whitespace(codigo, i);
 
   if (codigo[i] == ';') {
     printf("TOKEN_SEMICOLON\n");
