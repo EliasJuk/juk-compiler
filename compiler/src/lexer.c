@@ -13,6 +13,8 @@ static int skip_whitespace(const char *codigo, int i) {
 
 void lexer_analizer(const char *codigo){
   int i = 0;
+  
+  i = skip_whitespace(codigo, i);
 
   if(strncmp(&codigo[i], "print", 5) == 0 ){
     printf("TOKEN_PRINT\n");
