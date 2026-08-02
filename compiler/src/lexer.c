@@ -2,20 +2,30 @@
 #include <stdio.h>
 #include <string.h>
 
+
 void lexer_analizer(const char *codigo){
-  if(strncmp(codigo, "print", 5) == 0 ){
+  int i = 0;
+
+  if(strncmp(&codigo[i], "print", 5) == 0 ){
     printf("TOKEN_PRINT\n");
+    i += 5;
+  }
+
+  while (codigo[i] == ' ') {
+    // SKIP BLANK
+    i++;
   }
   
-  if (codigo[5] == '(') {
+  if (codigo[i] == '(') {
     printf("TOKEN_LEFT_PAREN\n");
+    i++;
   }
 
-  if (codigo[6] == '"') {
+  if (codigo[i] == '"') {
     printf("INICIO_STRING\n");
+    i++;
   }
 
-  int i = 7;
   while (codigo[i] != '"' && codigo[i] != '\0') {
     printf("%c", codigo[i]);
     i++;
