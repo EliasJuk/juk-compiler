@@ -40,6 +40,11 @@ void lexer_analizer(const char *codigo){
     i++;
   }
 
+  if (codigo[i] == '\0') {
+    printf("\nERRO_LEXICO: string nao finalizada.\n");
+    return;
+  }
+
   if (codigo[i] == '"') {
     printf("\nFIM_STRING\n");
     i++;
