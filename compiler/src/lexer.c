@@ -21,5 +21,17 @@ void lexer_analizer(const char *codigo){
     i++;
   }
 
-  printf("\n");
+  if (codigo[i] == '"') {
+    printf("\nFIM_STRING\n");
+    i++;
+  }
+
+  if (codigo[i] == ')') {
+    printf("TOKEN_RIGHT_PAREN\n");
+    i++;
+  }
+
+  if (codigo[i] == ';') {
+    printf("TOKEN_SEMICOLON\n");
+  }
 }
