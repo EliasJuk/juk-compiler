@@ -11,8 +11,7 @@ void lexer_analizer(const char *codigo){
     i += 5;
   }
 
-  while (codigo[i] == ' ') {
-    // SKIP BLANK
+  while (isspace((unsigned char) codigo[i])) {
     i++;
   }
   
