@@ -2,6 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 
+static int skip_whitespace(const char *codigo, int i) {
+  while (isspace((unsigned char) codigo[i])) {
+    i++;
+  }
+
+  return i;
+}
+
 
 void lexer_analizer(const char *codigo){
   int i = 0;
@@ -11,9 +19,7 @@ void lexer_analizer(const char *codigo){
     i += 5;
   }
 
-  while (isspace((unsigned char) codigo[i])) {
-    i++;
-  }
+  i = skip_whitespace(codigo, i);
   
   if (codigo[i] == '(') {
     printf("TOKEN_LEFT_PAREN\n");
